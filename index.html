@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @font-face {
+        font-family: "MyFont";
+        src: url("/ModularTypeTampon-Regular.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-content: space-around;
+      }
+      p {
+        text-align: center;
+      }
+      input {
+        margin: 10vw;
+        width: 80vw;
+        font-size: 15vw;
+        font-family: MyFont;
+      }
+
+      input:focus {
+        outline: none;
+      }
+      #visuals {
+        margin-left: 10vw;
+        display: grid;
+        gap: 10px;
+        /* ets each row to a fixed height of 100px */
+        align-items: center;
+        justify-content: space-around;
+      }
+      .shape {
+        width: 10vw;
+      }
+
+      ::selection {
+        color: white;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="input" autocomplete="off" />
+    <p id="instructions"></p>
+    <div id="visuals"></div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
