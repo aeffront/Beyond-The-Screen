@@ -10,36 +10,65 @@
         font-weight: normal;
         font-style: normal;
       }
+      ::-webkit-scrollbar {
+        width: 1vw;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        border: 1px solid black;
+        padding: 1vw;
+        left: 10vw;
+        border-radius: 0px;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #b30000;
+      }
 
       body {
+        overscroll-behavior: none;
         display: flex;
         flex-direction: column;
-        justify-content: left;
-        align-content: space-around;
+
+        align-items: center;
       }
+
       p {
         text-align: center;
       }
       input {
-        margin: 10vw;
-        width: 80vw;
-        font-size: 15vw;
+        margin-top: 10vh;
+        left: 10%;
+        font-size: 5vw;
         font-family: MyFont;
+        width: 30vw;
+        padding: 1vw;
+        border: none;
+        border-bottom: 1px solid black;
       }
 
       input:focus {
         outline: none;
       }
       #visuals {
-        margin-left: 10vw;
+        margin: 10vh;
+        margin-top: 10vw;
         display: grid;
-        gap: 10px;
+        gap: 1vw;
+        column-gap: 5vw;
         /* ets each row to a fixed height of 100px */
-        align-items: center;
+
         justify-content: space-around;
+        width: fit-content;
+        height: fit-content;
+        border: 1px solid black;
+        padding: 5vw;
+        border-radius: 1vw;
       }
       .shape {
-        width: 10vw;
+        width: 5vw;
       }
 
       ::selection {
@@ -49,9 +78,10 @@
     </style>
   </head>
   <body>
-    <input type="text" id="input" autocomplete="off" />
-    <p id="instructions"></p>
+    <input type="text" id="input" autocomplete="off" placeholder="exemple" />
+
     <div id="visuals"></div>
+    <p id="instructions"></p>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
