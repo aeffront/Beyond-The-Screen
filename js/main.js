@@ -68,7 +68,7 @@ function extract_letters(word) {
 function step(val) {
   instructions = [];
   shapeInstructions = [];
-  val += 1;
+  val += 4;
   shapeInstructions.push(["paper", "insert"]);
   for (let i = 0; i < val; i++) {
     letters.forEach((element) => {
