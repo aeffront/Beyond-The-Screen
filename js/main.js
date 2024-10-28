@@ -83,6 +83,7 @@ function step(val) {
     
   }
   shapeInstructions.push(["paper", "cut"]);
+  time = instructions.length/10;
 }
 
 function addShapes() {
@@ -256,7 +257,7 @@ let word;
 let instructions = [];
 const instructions_text = document.getElementById("instructions");
 let instruction_text = "";
-let time = 1;
+let time = instructions.length/10;
 
 word = "exemple";
 extract_letters(word);

@@ -1,0 +1,90 @@
+@font-face {
+    font-family: "MyFont";
+    src: url("../public/ModularTypeTampon-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  ::-webkit-scrollbar {
+    width: 1vw;
+    transition-duration: 1s;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid black;
+    padding: 1vw;
+    left: 10vw;
+    border-radius: 0px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: black;
+  }
+
+  body {
+    overscroll-behavior: none;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  p {
+    text-align: center;
+  }
+  input {
+    margin-top: 10vh;
+    left: 10%;
+    font-size: 5vw;
+    font-family: MyFont;
+    width: 30vw;
+    padding: 1vw;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+
+  input:focus {
+    outline: none;
+  }
+  #visuals {
+    background-color: white;
+    margin: 10vh;
+    margin-top: 10vw;
+    display: grid;
+
+    gap: 3vw;
+    /* ets each row to a fixed height of 100px */
+
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid black;
+    padding: 5vw;
+    border-radius: 0vw;
+    
+  }
+  .shape {
+    width: 3vw;
+    transition-duration: 0.3s;
+  }
+  .shape:hover {
+    width: 4vw;
+  }
+
+  ::selection {
+    color: white;
+    background: black;
+  }
+  #canvas {
+    display: none;
+  }
+  #lottie {
+    height: 100vh;
+    left: 10vw;
+    transition-duration: 0.5s;
+  }
+  
+  .hitbox{
+    filter: opacity(0%);
+  }
+  
