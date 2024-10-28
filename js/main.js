@@ -92,7 +92,7 @@ function addShapes() {
 
   function processShape(i) {
     if (shapeInstructions[i][0] == "paper") {
-      console.log("paper");
+     
       row++;
     }
     let img = document.createElement("img");
@@ -108,7 +108,7 @@ function addShapes() {
     document.getElementById("visuals").appendChild(img);
 
     i++;
-    console.log(document.getElementById("visuals").style.top);
+    
     //img.scrollIntoView();
 
     if (i < shapeInstructions.length)
