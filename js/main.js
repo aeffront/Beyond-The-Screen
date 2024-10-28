@@ -68,9 +68,10 @@ function extract_letters(word) {
 function step(val) {
   instructions = [];
   shapeInstructions = [];
-  val += 4;
+  val += 1;
   shapeInstructions.push(["paper", "insert"]);
   for (let i = 0; i < val; i++) {
+    
     letters.forEach((element) => {
       element.print(instructions);
     });
@@ -79,6 +80,7 @@ function step(val) {
       element.move(instructions);
     });
     shapeInstructions.push(["paper", "move"]);
+    
   }
   shapeInstructions.push(["paper", "cut"]);
 }
@@ -88,6 +90,10 @@ function addShapes() {
   let col = 0;
 
   function processShape(i) {
+    if (shapeInstructions[i][0] == "paper") {
+      console.log("paper");
+      row++;
+    }
     let img = document.createElement("img");
     img.style.gridRow = row;
     img.style.gridColumn = col;
@@ -95,10 +101,7 @@ function addShapes() {
       "src",
       `public/shapes/${shapeInstructions[i][0]}/${shapeInstructions[i][1]}.svg`
     );
-    if (shapeInstructions[i][0] == "paper") {
-      console.log("paper");
-      row++;
-    }
+    
     img.setAttribute("width", "10%");
     img.setAttribute("class", "shape");
     document.getElementById("visuals").appendChild(img);
