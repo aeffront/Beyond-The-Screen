@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"
+      integrity="sha512-jEnuDt6jfecCjthQAJ+ed0MTVA++5ZKmlUcmDGBv2vUI/REn6FuIdixLNnQT+vKusE2hhTk2is3cFvv5wA+Sgg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <style>
       @font-face {
         font-family: "MyFont";
@@ -12,6 +18,7 @@
       }
       ::-webkit-scrollbar {
         width: 1vw;
+        transition-duration: 1s;
       }
 
       /* Handle */
@@ -24,7 +31,7 @@
 
       /* Handle on hover */
       ::-webkit-scrollbar-thumb:hover {
-        background: #b30000;
+        background: black;
       }
 
       body {
@@ -56,11 +63,10 @@
         margin: 10vh;
         margin-top: 10vw;
         display: grid;
-        gap: 1vw;
-        column-gap: 5vw;
+
+        gap: 3vw;
         /* ets each row to a fixed height of 100px */
 
-        justify-content: space-around;
         width: fit-content;
         height: fit-content;
         border: 1px solid black;
@@ -68,18 +74,40 @@
         border-radius: 1vw;
       }
       .shape {
-        width: 5vw;
+        width: 3vw;
+        transition-duration: 0.3s;
+      }
+      .shape:hover {
+        width: 4vw;
       }
 
       ::selection {
         color: white;
         background: black;
       }
+      #canvas {
+        display: none;
+      }
+      #lottie {
+        height: 100vh;
+        left: 10vw;
+      }
     </style>
   </head>
   <body>
+    <div id="lottie"></div>
+    <script>
+      var animation = bodymovin.loadAnimation({
+        container: document.getElementById("lottie"), // Required
+        path: "data.json", // Required
+        renderer: "svg", // Required
+        loop: true, // Optional
+        autoplay: true, // Optional
+        name: "Hello World", // Name for future reference. Optional.
+      });
+    </script>
     <input type="text" id="input" autocomplete="off" placeholder="exemple" />
-
+    <canvas id="canvas"></canvas>
     <div id="visuals"></div>
     <p id="instructions"></p>
     <script type="module" src="/main.js"></script>

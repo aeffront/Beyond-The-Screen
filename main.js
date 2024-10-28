@@ -125,23 +125,127 @@ function show_instructions() {
   instructions_text.innerHTML = instruction_text;
 }
 
-window.addEventListener("keydown", (e) => {
-  localStorage.clear();
-  if (e.code == "Enter") {
-    console.log();
-    word = document.getElementById("input").value;
-    console.log(word, word.length);
-    extract_letters(word);
-    step(word.length + 1);
-    console.log(instructions);
-    //show_instructions();
-    document.getElementById("visuals").innerHTML = "";
-    addShapes();
-  }
-});
-
 const colors = ["black", "green", "orange", "yellow"];
 const shapes = ["house", "circle", "triangle", "square"];
+
+let canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 300;
+canvas.height = 300;
+
+let pos = { x: 20, y: canvas.height / 2 };
+let scale = 0.1;
+
+function black(rot) {
+  ctx.save();
+  ctx.translate(pos.x, pos.y);
+  ctx.scale(scale, scale);
+
+  if (rot == "house") {
+    ctx.rotate(0);
+  } else if (rot == "circle") {
+    ctx.rotate(Math.PI / 2);
+  } else if (rot == "triangle") {
+    ctx.rotate(Math.PI);
+  } else if (rot == "square") {
+    ctx.rotate(-Math.PI / 2);
+  }
+
+  ctx.moveTo(10, 0);
+  ctx.lineWidth = 20;
+  ctx.lineTo(canvas.width / 4, 0);
+  ctx.strokeStyle = "black";
+  ctx.stroke();
+  ctx.restore();
+}
+function green(rot) {
+  ctx.save();
+  ctx.translate(pos.x, pos.y);
+  ctx.scale(scale, scale);
+
+  if (rot == "house") {
+    ctx.rotate(0);
+  } else if (rot == "circle") {
+    ctx.rotate(Math.PI / 2);
+  } else if (rot == "triangle") {
+    ctx.rotate(Math.PI);
+  } else if (rot == "square") {
+    ctx.rotate(-Math.PI / 2);
+  }
+  ctx.translate(-10, 10);
+  ctx.moveTo(0, 0 + canvas.width / 4);
+  ctx.lineWidth = 20;
+  ctx.arc(0, 0, canvas.width / 4, Math.PI / 2, Math.PI);
+  ctx.strokeStyle = "green";
+  ctx.stroke();
+  ctx.restore();
+}
+function orange(rot) {
+  ctx.save();
+  ctx.translate(pos.x, pos.y);
+  ctx.scale(scale, scale);
+
+  if (rot == "house") {
+    ctx.rotate(0);
+  } else if (rot == "circle") {
+    ctx.rotate(Math.PI / 2);
+  } else if (rot == "triangle") {
+    ctx.rotate(Math.PI);
+  } else if (rot == "square") {
+    ctx.rotate(-Math.PI / 2);
+  }
+  ctx.translate(10, -10);
+  ctx.moveTo(0, -canvas.width / 4);
+  ctx.lineWidth = 20;
+  ctx.lineTo(10 + canvas.width / 4, -canvas.width / 4);
+  ctx.strokeStyle = "green";
+  ctx.stroke();
+  ctx.restore();
+}
+function yellow(rot) {
+  ctx.save();
+  ctx.translate(pos.x, pos.y);
+  ctx.scale(scale, scale);
+
+  if (rot == "house") {
+    ctx.rotate(0);
+  } else if (rot == "circle") {
+    ctx.rotate(Math.PI / 2);
+  } else if (rot == "triangle") {
+    ctx.rotate(Math.PI);
+  } else if (rot == "square") {
+    ctx.rotate(-Math.PI / 2);
+  }
+  ctx.translate(-10, -10);
+  ctx.moveTo(0, -canvas.width / 4);
+  ctx.lineWidth = 20;
+  ctx.lineTo(-10 - canvas.width / 4, -canvas.width / 4);
+  ctx.strokeStyle = "green";
+  ctx.stroke();
+  ctx.restore();
+}
+
+function draw() {
+  pos = { x: 20, y: canvas.height / 2 };
+  ctx.clearRect(-10000, -10000, 10000, 10000);
+  for (let i = 0; i < shapeInstructions.length; i++) {
+    const color = shapeInstructions[i][0];
+    const shape = shapeInstructions[i][1];
+
+    if (color == "black") {
+      black(shape);
+    } else if (color == "green") {
+      green(shape);
+    } else if (color == "orange") {
+      orange(shape);
+    } else if (color == "yellow") {
+      yellow(shape);
+    } else if (color == "paper") {
+      pos.x += 20;
+    }
+  }
+}
 
 let shapeInstructions = [];
 let letters = [];
@@ -155,3 +259,19 @@ word = "exemple";
 extract_letters(word);
 step(word.length + 1);
 addShapes();
+
+window.addEventListener("keydown", (e) => {
+  localStorage.clear();
+  if (e.code == "Enter") {
+    console.log();
+    word = document.getElementById("input").value;
+    console.log(word, word.length);
+    extract_letters(word);
+    step(word.length + 1);
+    console.log(shapeInstructions);
+    //show_instructions();
+    document.getElementById("visuals").innerHTML = "";
+    addShapes();
+    draw();
+  }
+});
