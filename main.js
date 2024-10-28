@@ -93,7 +93,7 @@ function addShapes() {
     img.style.gridColumn = col;
     img.setAttribute(
       "src",
-      `./shapes/${shapeInstructions[i][0]}/${shapeInstructions[i][1]}.svg`
+      `./public/shapes/${shapeInstructions[i][0]}/${shapeInstructions[i][1]}.svg`
     );
     if (shapeInstructions[i][0] == "paper") {
       console.log("paper");
