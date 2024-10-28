@@ -19,23 +19,25 @@ var animation_main = bodymovin.loadAnimation({
     loop: false, // Optional
     autoplay: false, // Optional
   });
-  var animation_yellow = bodymovin.loadAnimation({
-    container: document.getElementById("lottie4"), // Required
-    path: "public/lotties/yellow.json", // Required
-    renderer: "svg", // Required
-    loop: false, // Optional
-    autoplay: false, // Optional
-  });
+  
   var animation_orange = bodymovin.loadAnimation({
-    container: document.getElementById("lottie5"), // Required
+    container: document.getElementById("lottie4"), // Required
     path: "public/lotties/orange.json", // Required
     renderer: "svg", // Required
     loop: false, // Optional
     autoplay: false, // Optional
   });
 
+  var animation_yellow = bodymovin.loadAnimation({
+    container: document.getElementById("lottie5"), // Required
+    path: "public/lotties/yellow.json", // Required
+    renderer: "svg", // Required
+    loop: false, // Optional
+    autoplay: false, // Optional
+  });
 
-  animation_orange.addEventListener('DOMLoaded', () => {
+
+  animation_yellow.addEventListener('DOMLoaded', () => {
     const hitbox_yellow = document.getElementsByClassName("yellow").item(0);
     console.log(hitbox_yellow);
 
@@ -63,4 +65,17 @@ var animation_main = bodymovin.loadAnimation({
     hitbox_black.addEventListener('click', () => {
       animation_black.goToAndPlay(0);
     });
+
+    animation_black.play();
+    setTimeout(() => {
+      animation_green.play();
+      setTimeout(() => {
+        animation_orange.play();
+        setTimeout(() => {
+          animation_yellow.play();
+        }, 500);
+      }, 500);
+    }, 500);
+    
+
   });
